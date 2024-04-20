@@ -5,8 +5,24 @@
 }
 @font-face {
     font-family: 'Super-GetVoIP';
-    src: url('@/assets/fonts/GetVoIP.woff2') format('woff2');
+    src: url('@/assets/fonts/GetVoIP.woff2') format('woff2'),
+         url('@/assets/fonts/GetVoIP.woff') format('woff');
     font-display: swap;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --color-white: #F9E9E0;
+    --color-orange: #F47934;
+    --color-black: #252525;
+    --color-grey: #726D69;
+    
+    --sizer: calc(1vw + 1vh)
 }
 
 .font-inter {
@@ -23,7 +39,15 @@ html, body, #__nuxt {
     min-height: 100%;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
 }
 .main {
     flex: 1 1 auto;
+}
+
+.container {
+    max-width: 1808px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 16px;
 }

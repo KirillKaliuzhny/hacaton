@@ -1,10 +1,11 @@
 <script setup>
     import '@/assets/css/global.css'
+    import IndexHeader from '@/components/IndexPage/IndexHeader.vue'
 </script>
 
 <template>
     <div class="wrapper">
-        <header></header>
+        <IndexHeader />
         <main class="main">
             <slot />
         </main>
