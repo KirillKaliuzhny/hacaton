@@ -174,7 +174,7 @@
                         <p class="person__job">
                             ( ux/ui дизайнер )
                         </p>
-                        <ul class="person__list stack">
+                        <ul class="person__list stack font-inter">
                             <li class="stack__item">
                                 <p class="stack-name">
                                     стек технологий:
@@ -200,7 +200,7 @@
                                 </p>
                             </li>
                         </ul>
-                        <p class="person__description">
+                        <p class="person__description font-inter">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut a bibendum erat. Vestibulum quis egestas erat, in rhoncus eros. Sed malesuada urna odio, ac sagittis leo elementum
                         </p>
                     </div>
@@ -259,6 +259,7 @@
         display: flex;
         flex-direction: column;
         gap: 20px;
+        padding-bottom: 48px;
     }
     .team-item {
         display: flex;
@@ -317,6 +318,17 @@
     .team-item.active svg path {
         stroke: var(--color-orange);
     }
+    .person__img {
+        border-radius: 24px;
+        margin-bottom: 20px;
+    }
+    .person__img img {
+        width: 100%;
+        border-radius: 24px;
+    }
+    .person__info {
+        padding: 0 16px;
+    }
     .person__title {
         font-weight: 700;
         font-size: 32px;
@@ -331,5 +343,28 @@
         line-height: 22px;
         color: var(--color-black);
         margin-bottom: 16px;
+    }
+    .person__list {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-bottom: 16px;
+    }
+    .stack__item {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .stack-name {
+        color: var(--color-grey);
+        font-weight: 500;
+        font-size: 1rem;
+        line-height: 19px;
+    }
+    .stack__result {
+        text-align: right;
+        color: var(--color-black);
+        font-weight: 600;
+        font-size: 1rem;
+        line-height: 19px;
     }
 </style>
