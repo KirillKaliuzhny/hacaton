@@ -1,5 +1,6 @@
 <script setup>
     import '@/assets/css/global.css'
+    import IndexHeader from '@/components/IndexPage/IndexHeader.vue'
 </script>
 
 <template>
