@@ -1,5 +1,22 @@
 <script setup>
 
+    const clicker = (event) => {
+        const activeMembers = document.querySelectorAll('.team-item.active');
+        let currentEl = event.target;
+        while (!currentEl.classList.contains('team-item')) {
+            currentEl = currentEl.parentNode;
+        }
+        if (!activeMembers.length) {
+            currentEl.classList.add('active');
+        }
+        for (let i = 0; i < activeMembers.length; i++) {
+            if (activeMembers[i] == currentEl) {
+                currentEl.classList.toggle('active')
+            }
+            activeMembers[i].classList.remove('active');
+        }
+    }
+
 </script>
 
 <template>
@@ -23,129 +40,7 @@
             Состав команды
         </h2>
         <ul class="team__list">
-            <li class="team-item person">
-                <div class="person-header font-inter">
-                    <div class="person__data">
-                        <h3 class="person-name">
-                            Казанцева Алина Дмитриевна
-                        </h3>
-                        <h4 class="person-job">
-                            ( ux/ui дизайнер )
-                        </h4>
-                    </div>
-                    <div class="person-galina">
-                        <svg width="19" height="13" viewBox="0 0 19 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M17 2.5L9.5 10.5L2 2.5" stroke="#F47934" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                </div>
-                <div class="person__content">
-                    <div class="person__img">
-                        <picture>
-                            <img src="@/assets/img/logo.png" alt="logo">
-                        </picture>
-                    </div>
-                    <div class="person__info">
-                        <h2 class="person__title">
-                            Казанцева Алина Дмитриевна
-                        </h2>
-                        <p class="person__job">
-                            ( ux/ui дизайнер )
-                        </p>
-                        <ul class="person__list stack">
-                            <li class="stack__item">
-                                <p class="stack-name">
-                                    стек технологий:
-                                </p>
-                                <p class="stack__result">
-                                    Figma
-                                </p>
-                            </li>
-                            <li class="stack__item">
-                                <p class="stack-name">
-                                    оценка своего участия в данном кейсе:
-                                </p>
-                                <p class="stack__result">
-                                    5/5
-                                </p>
-                            </li>
-                            <li class="stack__item">
-                                <p class="stack-name">
-                                    Сложности реализации:
-                                </p>
-                                <p class="stack__result">
-                                    выбрать стилистику проекта
-                                </p>
-                            </li>
-                        </ul>
-                        <p class="person__description">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut a bibendum erat. Vestibulum quis egestas erat, in rhoncus eros. Sed malesuada urna odio, ac sagittis leo elementum
-                        </p>
-                    </div>
-                </div>
-            </li>
-            <li class="team-item person">
-                <div class="person-header font-inter">
-                    <div class="person__data">
-                        <h3 class="person-name">
-                            Казанцева Алина Дмитриевна
-                        </h3>
-                        <h4 class="person-job">
-                            ( ux/ui дизайнер )
-                        </h4>
-                    </div>
-                    <div class="person-galina">
-                        <svg width="19" height="13" viewBox="0 0 19 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M17 2.5L9.5 10.5L2 2.5" stroke="#F47934" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                </div>
-                <div class="person__content">
-                    <div class="person__img">
-                        <picture>
-                            <img src="@/assets/img/logo.png" alt="logo">
-                        </picture>
-                    </div>
-                    <div class="person__info">
-                        <h2 class="person__title">
-                            Казанцева Алина Дмитриевна
-                        </h2>
-                        <p class="person__job">
-                            ( ux/ui дизайнер )
-                        </p>
-                        <ul class="person__list stack">
-                            <li class="stack__item">
-                                <p class="stack-name">
-                                    стек технологий:
-                                </p>
-                                <p class="stack__result">
-                                    Figma
-                                </p>
-                            </li>
-                            <li class="stack__item">
-                                <p class="stack-name">
-                                    оценка своего участия в данном кейсе:
-                                </p>
-                                <p class="stack__result">
-                                    5/5
-                                </p>
-                            </li>
-                            <li class="stack__item">
-                                <p class="stack-name">
-                                    Сложности реализации:
-                                </p>
-                                <p class="stack__result">
-                                    выбрать стилистику проекта
-                                </p>
-                            </li>
-                        </ul>
-                        <p class="person__description">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut a bibendum erat. Vestibulum quis egestas erat, in rhoncus eros. Sed malesuada urna odio, ac sagittis leo elementum
-                        </p>
-                    </div>
-                </div>
-            </li>
-            <li class="team-item person">
+            <li v-for="item of 3" :key="item" class="team-item person" @click.stop="clicker">
                 <div class="person-header font-inter">
                     <div class="person__data">
                         <h3 class="person-name">
@@ -206,8 +101,17 @@
                     </div>
                 </div>
             </li>
-
+            <li class="team-item">
+                <button class="team-admin font-inter">
+                    Добавить участника
+                </button>
+            </li>
         </ul>
+        <div class="team-question">
+            <button class="question-btn font-inter">
+                Задать вопрос
+            </button>
+        </div>
     </section>
 </template> 
 
@@ -262,6 +166,7 @@
         padding-bottom: 48px;
     }
     .team-item {
+        position: relative;
         display: flex;
         flex-direction: column;
         gap: 20px;
@@ -286,6 +191,13 @@
         justify-content: space-between;
         align-items: center;
         padding: 20px;
+        margin: 0 12px;
+    }
+    .person__content {
+        display: none;
+    }
+    .team-item.active .person__content {
+        display: block;
     }
     .person__data {
         display: flex;
@@ -366,5 +278,28 @@
         font-weight: 600;
         font-size: 1rem;
         line-height: 19px;
+    }
+    .team-item {
+        margin-top: 20px;
+    }
+    .team-admin {
+        border: 2px solid var(--color-orange);
+        color: var(--color-orange);
+        border-radius: 14px;
+        padding: 20px 26px 20px 26px;
+        background: transparent;
+        font-weight: 500;
+        font-size: 1rem;
+    }
+    .team-question {
+        margin-top: 20px;
+    }
+    .question-btn {
+        background: var(--color-orange);
+        color: var(--color-white);
+        border-radius: 14px;
+        padding: 20px 26px 20px 26px;
+        border: 2px solid var(--color-orange);
+        width: 100%;
     }
 </style>
