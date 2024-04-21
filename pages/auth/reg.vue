@@ -1,5 +1,19 @@
 <script setup>
 
+    const teamName = ref('');
+    const bannerImg = ref('');
+    const email = ref('');
+    const login = ref('');
+    const password = ref('');
+
+    const passErrorMsg = 'Некорректно ввден пароль';
+    const viewError = ref(false);
+
+    const submitter = async (e) => {
+        const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+    }
+
 </script>
 
 <template>
@@ -14,29 +28,32 @@
         <h1 class="login__title font-getvoip">
             Регистрация
         </h1>
-        <form class="login-form font-inter">
+        <form class="login-form font-inter" @submit.prevent="submitter">
             <div class="login-input">
                 <p class="login-title">Название команды <span>( * )</span></p>
-                <input type="text" maxlength="20">
+                <input type="text" maxlength="20" v-model="teamName">
                 <p class="login-text">
                     *не более 20 символов
                 </p>
             </div>
             <div class="login-input">
                 <p class="login-title">Баннер <span>( * )</span></p>
-                <input type="file" maxlength="20">
+                <input type="file">
             </div>
             <div class="login-input">
                 <p class="login-title">Почта <span>( * )</span></p>
-                <input type="text" maxlength="20">
+                <input type="text" v-model="email">
             </div>
             <div class="login-input">
                 <p class="login-title">Логин <span>( * )</span></p>
-                <input type="text" maxlength="20">
+                <input type="text" v-model="login">
             </div>
             <div class="login-input">
                 <p class="login-title">Пароль <span>( * )</span></p>
-                <input type="password" maxlength="20">
+                <input type="password" v-model="password">
+                <p class="login-error">
+                    {{ passErrorMsg }}
+                </p>
                 <p class="login-text">
                     *минимальное количество символов 8, в них должны присутствовать: заглавная буква, строчная буква, цифра, символ
                 </p>
@@ -126,5 +143,13 @@
         width: 182px;
         height: 55px;
         font-size: 1rem;
+    }
+    .login-error {
+        font-family: 'Super-Inter';
+        color: red;
+        display: none;
+    }
+    .login-error.active {
+        display: block;
     }
 </style>
