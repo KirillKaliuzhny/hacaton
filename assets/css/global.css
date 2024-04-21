@@ -17,7 +17,7 @@
 }
 
 :root {
-    --color-white: #F9E9E0;
+    --color-white: #FCF5F1;
     --color-orange: #F47934;
     --color-black: #252525;
     --color-grey: #726D69;
@@ -50,4 +50,24 @@ html, body, #__nuxt {
     width: 100%;
     margin: 0 auto;
     padding: 0 16px;
+}
+
+.primary-btn {
+    cursor: pointer;
+    transition: .2s;
+}
+.primary-btn:hover {
+    background: var(--color-black);
+    border-color: var(--color-black);
+    color: var(--color-white);
+}
+
+.secondary-btn {
+    cursor: pointer;
+    transition: .2s;
+
+}
+.secondary-btn:hover {
+    border-color: var(--color-black);
+    color: var(--color-block);
 }
