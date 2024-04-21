@@ -1,7 +1,8 @@
 <script setup>
 
     definePageMeta({
-        middleware: ['teams']
+        middleware: ['teams'],
+        layout: 'default'
     })
 
     const clicker = (event) => {

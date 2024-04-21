@@ -12,6 +12,8 @@
     </div>
 </template>
 
-<style scoped>
-
+<style>
+    body, html {
+        background-color: #fff;
+    }
 </style>
