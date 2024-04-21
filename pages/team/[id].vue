@@ -1,5 +1,9 @@
 <script setup>
 
+    definePageMeta({
+        middleware: ['teams']
+    })
+
     const clicker = (event) => {
         let currentEl = event.target;
         while (!currentEl.classList.contains('person-header')) {
@@ -181,11 +185,6 @@
                         </button>
                     </li>
                 </ul>
-                <div class="team-question">
-                    <button class="question-btn font-inter primary-btn">
-                        Задать вопрос
-                    </button>
-                </div>
             </div>
         </div>
     </section>
@@ -385,19 +384,6 @@
         font-weight: 500;
         font-size: 1rem;
     }
-    .team-question {
-        margin-top: 20px;
-    }
-    .question-btn {
-        background: var(--color-orange);
-        color: var(--color-white);
-        border-radius: 14px;
-        padding: 20px 26px 20px 26px;
-        border: 2px solid var(--color-orange);
-        width: 100%;
-        font-size: 1rem;
-        font-weight: 500;
-    }
     @media (min-width: 768px) {
         .banner__body {
             grid-template-columns: repeat(2, 1fr);
@@ -434,17 +420,6 @@
         .person__body {
             width: 100%;
             max-width: 320px;
-        }
-        .team-question {
-            position: absolute;
-            top: 100%;
-            width: 100%;
-            display: flex;
-            justify-content: flex-start;
-            padding-right: 16px;
-        }
-        .question-btn {
-            width: 320px;
         }
     }
     @media (min-width: 1440px) {
@@ -493,13 +468,6 @@
         .person__job {
             font-size: 20px;
             margin-bottom: 20px;
-        }
-        .team-question {
-            justify-content: flex-end;
-            padding-right: 40px;
-        }
-        .question-btn {
-            width: 445px;
         }
     }
 </style>
