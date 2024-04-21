@@ -1,5 +1,10 @@
+import {useAuthStore} from '~/stores/auth.ts';
+
 export default defineNuxtRouteMiddleware(async (to, from) => {
-    if (to.path == '/team/') {
+    const { getTeam } = useAuthStore();
+    const data = getTeam();
+
+    if (to.path == '/team/' && !data) {
         return navigateTo('/', {redirectCode: 301})
     }
     
