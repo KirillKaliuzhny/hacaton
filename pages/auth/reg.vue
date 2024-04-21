@@ -1,5 +1,5 @@
 <script setup>
-
+    import {useAuthStore} from '~/stores/auth.ts';
     const teamName = ref('');
     const bannerImg = ref('');
     const email = ref('');
@@ -8,8 +8,20 @@
 
     const passErrorMsg = 'Некорректно введен пароль';
     const fileErrorMsg = 'Введен не тот тип файла';
+    const formErrorText = ref('');
+    const formErrorTextView = ref(false);
     const viewFileError = ref(false)
     const viewPassError = ref(false);
+
+
+    async function blobToBase64(blob) {
+        const reader = new FileReader();
+        return new Promise((resolve, reject) => {
+            reader.onloadend = () => resolve(reader.result); // Получаем Base64 данные после запятой
+            reader.onerror = reject;
+            reader.readAsDataURL(blob);
+        });
+    }
 
     const submitter = async (e) => {
         const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
@@ -28,7 +40,38 @@
             viewFileError.value = true;
             return;
         }
-        console.log(file);
+        const blob = await file.arrayBuffer().then(buffer => new Blob([buffer], { type: file.type }))
+        const banner = await blobToBase64(blob);
+        const config = useRuntimeConfig();
+        const { data: teamData, error } = await useFetch(
+            config.public.apiUrl + '/teams/',
+            {
+                method: 'post',
+                body: {
+                    team_name: teamName.value,
+                    email: email.value,
+                    login: login.value,
+                    password: password.value,
+                    image: banner,
+                    team_users: [
+                        {
+                            surname: 'Тестовый участнк',
+                            patronymic: '',
+                            image: banner,
+                            description: 'Мега разраб, в 7 лет написал компилятор для своего языка, опыт коммерческой разработки 20 лет, мне 22 года',
+                        }
+                    ]
+                }
+            }
+        );
+        if (error.value) {
+            formErrorTextView.value = true;
+            formErrorText.value = error.value.data.detail;
+            return;
+        }
+        const { setTeam } = useAuthStore();
+        setTeam(teamData.value.token, teamData.value.slug);
+        navigateTo('/', {redirectCode: 301})
     }
 
 </script>
@@ -81,6 +124,9 @@
             <p class="login-description font-inter">
                 <span>( * )</span>
                 обязательное поле
+            </p>
+            <p class="login-error" v-if="formErrorTextView">
+                {{ formErrorText }}
             </p>
             <div class="login-buttons">
                 <button class="login-btn primary-btn font-inter" @click="submitter">
