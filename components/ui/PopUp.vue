@@ -1,7 +1,7 @@
 <script setup>
 
-import Input from "~/pages/team/ui/Input.vue";
-import Banner from "~/pages/team/ui/Banner.vue";
+import Input from "~/components/ui/Input.vue";
+import Banner from "~/components/ui/Banner.vue";
 
 const {
   isShow,

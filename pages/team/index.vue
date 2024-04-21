@@ -2,9 +2,9 @@
 /*definePageMeta({
     middleware: ['teams']
 })*/
-import Input from "~/pages/team/ui/Input.vue";
-import Banner from "~/pages/team/ui/Banner.vue";
-import PopUp from "~/pages/team/ui/PopUp.vue";
+import Input from "~/components/ui/Input.vue";
+import Banner from "~/components/ui/Banner.vue";
+import PopUp from "~/components/ui/PopUp.vue";
 
 const team = ref({
   title: null,

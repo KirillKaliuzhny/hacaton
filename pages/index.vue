@@ -18,8 +18,7 @@ const showModal = ref(false);
 const showRatingModal = ref(false)
 
 const changeRatingView = () => {
-  console.log('click')
-  showRatingModal.value = !showRatingModal.value
+  showRatingModal.value = !showRatingModal.value;
 }
 
 const setVisibleModal = () => {
@@ -38,7 +37,9 @@ definePageMeta({
 <template>
   <div class="main-page">
     <div class="index__header container">
-      <HeaderBtn>Профиль</HeaderBtn>
+      <nuxt-link to="auth/login" style="text-decoration: none;">
+        <HeaderBtn>Профиль</HeaderBtn>
+      </nuxt-link>
     </div>
     <div class="main__text">
       <div>зарегистрированные команды</div>
@@ -51,27 +52,30 @@ definePageMeta({
           :slidesPerView="'auto'"
           initial-slide="1"
           :coverflowEffect="{
-      rotate: 0,
-      stretch: 0,
-      depth: 200,
-      modifier: 2,
-      slideShadows: true,
-    }"
+            rotate: 0,
+            stretch: 0,
+            depth: 200,
+            modifier: 2,
+            slideShadows: true,
+          }"
           :pagination="true"
           :modules="modules"
           class="mySwiper"
       >
         <swiper-slide>
-          <div class="team-card">
-          </div>
+          <nuxt-link class="team-card" to="/team/id" style="display: block">
+
+          </nuxt-link>
         </swiper-slide>
         <swiper-slide>
-          <div class="team-card">
-          </div>
+          <nuxt-link class="team-card" to="/team/id" style="display: block">
+
+</nuxt-link>
         </swiper-slide>
         <swiper-slide>
-          <div class="team-card">
-          </div>
+          <nuxt-link class="team-card" to="/team/id" style="display: block">
+
+</nuxt-link>
         </swiper-slide>
       </swiper>
     </div>
@@ -82,10 +86,7 @@ definePageMeta({
         </div>
         <div
             class="index__rating-team"
-            :class="{
-              'index__rating-team_open': showRatingModal,
-              'index__rating-team_close': !showRatingModal
-            }"
+            :class="showRatingModal ? 'index__rating-team_open' : 'index__rating-team_close'"
         >
           <TableTeamRating @arrowClick="changeRatingView"/>
         </div>
@@ -140,17 +141,9 @@ definePageMeta({
     height: 300px;
   }
 }
-
-.swiper-slide {
-
-}
-
-.slide_active {
-
-  .team-card {
+.team-card {
     background: yellow;
   }
-}
 
 .swiper-slide img {
   display: block;
@@ -166,17 +159,16 @@ definePageMeta({
 
   border-radius: 20px;
 }
-
-.index__rating-team_open {
-  @media screen and (max-width: 500px){
+@media screen and (max-width: 500px){
+  .index__rating-team_open {
     display: block;
+
   }
-}
-.index__rating-team_close {
-  @media screen and (max-width: 500px){
+  .index__rating-team_close {
     display: none;
-  }
 }
+}
+
 
 </style>
 
@@ -184,8 +176,11 @@ definePageMeta({
 .main-page {
   padding: 40px 0 70px;
 
-  @media screen and (max-width: 500px){
+}
+@media screen and (max-width: 500px){
+  .main-page {
     padding: 20px 0;
+
   }
 }
 
@@ -200,7 +195,9 @@ definePageMeta({
 .index__rating-team {
   margin-top: 60px;
 
-  @media screen and (max-width: 500px){
+}
+@media screen and (max-width: 500px){
+  .index__rating-team {
     margin-top: 0;
 
     position: fixed;
@@ -211,7 +208,7 @@ definePageMeta({
     height: 100vh;
 
     z-index: 10;
-
+  }
 
     .index__rating-team-table {
       width: 100%;
@@ -221,7 +218,6 @@ definePageMeta({
       padding: 20px 15px;
     }
   }
-}
 
 .index__rating-team-btn_mobile {
   display: none;
@@ -238,7 +234,9 @@ definePageMeta({
 
   text-align: center;
 
-  @media screen and (max-width: 500px) {
+}
+@media screen and (max-width: 500px) {
+  .index__rating-team-btn_mobile {
     display: block;
   }
 }
@@ -283,12 +281,10 @@ definePageMeta({
   max-width: 1344px;
   margin: 0 auto;
 
-  @media screen and (max-width: 1400px){
+}
+@media screen and (max-width: 1400px){
+  .index__header {
     padding: 0 20px;
   }
 }
-
-.container {
-}
-
 </style>

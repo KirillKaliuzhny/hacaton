@@ -2,7 +2,6 @@
 
     definePageMeta({
         middleware: ['teams'],
-        layout: 'default'
     })
 
     const clicker = (event) => {
@@ -28,170 +27,177 @@
 </script>
 
 <template>
-    <section class="banner">
-        <div class="container">
-            <div class="banner__body">
-                <div class="banner__img">
-                   <picture>
-                       <img src="@/assets/img/banner.png" alt="banner">
-                   </picture>
-                </div>
-                <div class="banner__team">
-                   <p class="banner-title font-inter">
-                       ( название )
-                   </p>
-                   <h1 class="banner-name font-getvoip">
-                       API'шный латте
-                   </h1>
-                </div>
-            </div>    
-        </div>
-    </section> 
-    <section class="team">
-        <div class="teams__block">
+    <div class="master">
+        <section class="banner">
             <div class="container">
-                <h2 class="team-title font-getvoip">
-                    Состав команды
-                </h2>
-                <ul class="team__list">
-                    <li v-for="(index, item) of 2" :key="item" class="team-item person">
-                        <div class="person-header font-inter" :data-id="index" @click="clicker">
-                            <div class="person__data">
-                                <h3 class="person-name">
-                                    Казанцева Алина Дмитриевна
-                                </h3>
-                                <h4 class="person-job">
-                                    ( ux/ui дизайнер )
-                                </h4>
-                            </div>
-                            <div class="person-galina">
-                                <svg width="19" height="13" viewBox="0 0 19 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M17 2.5L9.5 10.5L2 2.5" stroke="#F47934" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="person__content">
-                            <div class="person__img">
-                                <picture>
-                                    <img src="@/assets/img/logo.png" alt="logo">
-                                </picture>
-                            </div>
-                            <div class="person__info">
-                                <h2 class="person__title font-getvoip">
-                                    Казанцева Алина Дмитриевна
-                                </h2>
-                                <div class="person__body">
-                                    <p class="person__job">
-                                        ( ux/ui дизайнер )
-                                    </p>
-                                    <ul class="person__list stack font-inter">
-                                        <li class="stack__item">
-                                            <p class="stack-name">
-                                                стек технологий:
-                                            </p>
-                                            <p class="stack__result">
-                                                Figma
-                                            </p>
-                                        </li>
-                                        <li class="stack__item">
-                                            <p class="stack-name">
-                                                оценка своего участия в данном кейсе:
-                                            </p>
-                                            <p class="stack__result">
-                                                5/5
-                                            </p>
-                                        </li>
-                                        <li class="stack__item">
-                                            <p class="stack-name">
-                                                Сложности реализации:
-                                            </p>
-                                            <p class="stack__result">
-                                                выбрать стилистику проекта
-                                            </p>
-                                        </li>
-                                    </ul>
-                                    <p class="person__description font-inter">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut a bibendum erat. Vestibulum quis egestas erat, in rhoncus eros. Sed malesuada urna odio, ac sagittis leo elementum
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="team-item person">
-                        <div class="person-header font-inter" :data-id="index" @click="clicker">
-                            <div class="person__data">
-                                <h3 class="person-name">
-                                    Казанцева Алина Дмитриевна
-                                </h3>
-                                <h4 class="person-job">
-                                    ( ux/ui дизайнер )
-                                </h4>
-                            </div>
-                            <div class="person-galina">
-                                <svg width="19" height="13" viewBox="0 0 19 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M17 2.5L9.5 10.5L2 2.5" stroke="#F47934" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="person__content">
-                            <div class="person__img">
-                                <picture>
-                                    <img src="@/assets/img/banner.png" alt="logo">
-                                </picture>
-                            </div>
-                            <div class="person__info">
-                                <h2 class="person__title font-getvoip">
-                                    Казанцева Алина Дмитриевна
-                                </h2>
-                                <div class="person__body">
-                                    <p class="person__job">
-                                        ( ux/ui дизайнер )
-                                    </p>
-                                    <ul class="person__list stack font-inter">
-                                        <li class="stack__item">
-                                            <p class="stack-name">
-                                                стек технологий:
-                                            </p>
-                                            <p class="stack__result">
-                                                Figma
-                                            </p>
-                                        </li>
-                                        <li class="stack__item">
-                                            <p class="stack-name">
-                                                оценка своего участия в данном кейсе:
-                                            </p>
-                                            <p class="stack__result">
-                                                5/5
-                                            </p>
-                                        </li>
-                                        <li class="stack__item">
-                                            <p class="stack-name">
-                                                Сложности реализации:
-                                            </p>
-                                            <p class="stack__result">
-                                                выбрать стилистику проекта
-                                            </p>
-                                        </li>
-                                    </ul>
-                                    <p class="person__description font-inter">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut a bibendum erat. Vestibulum quis egestas erat, in rhoncus eros. Sed malesuada urna odio, ac sagittis leo elementum
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="team-item">
-                        <button class="team-admin font-inter secondary-btn">
-                            Добавить участника
-                        </button>
-                    </li>
-                </ul>
+                <div class="banner__body">
+                    <div class="banner__img">
+                       <picture>
+                           <img src="@/assets/img/banner.png" alt="banner">
+                       </picture>
+                    </div>
+                    <div class="banner__team">
+                       <p class="banner-title font-inter">
+                           ( название )
+                       </p>
+                       <h1 class="banner-name font-getvoip">
+                           API'шный латте
+                       </h1>
+                    </div>
+                </div>    
             </div>
-        </div>
-    </section>
+        </section> 
+        <section class="team">
+            <div class="teams__block">
+                <div class="container">
+                    <h2 class="team-title font-getvoip">
+                        Состав команды
+                    </h2>
+                    <ul class="team__list">
+                        <li v-for="item of 3" :key="item" class="team-item person">
+                            <div class="person-header font-inter" @click="clicker">
+                                <div class="person__data">
+                                    <h3 class="person-name">
+                                        Казанцева Алина Дмитриевна
+                                    </h3>
+                                    <h4 class="person-job">
+                                        ( ux/ui дизайнер )
+                                    </h4>
+                                </div>
+                                <div class="person-galina">
+                                    <svg width="19" height="13" viewBox="0 0 19 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M17 2.5L9.5 10.5L2 2.5" stroke="#F47934" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="person__content">
+                                <div class="person__img">
+                                    <picture>
+                                        <img src="@/assets/img/logo.png" alt="logo">
+                                    </picture>
+                                </div>
+                                <div class="person__info">
+                                    <h2 class="person__title font-getvoip">
+                                        Казанцева Алина Дмитриевна
+                                    </h2>
+                                    <div class="person__body">
+                                        <p class="person__job">
+                                            ( ux/ui дизайнер )
+                                        </p>
+                                        <ul class="person__list stack font-inter">
+                                            <li class="stack__item">
+                                                <p class="stack-name">
+                                                    стек технологий:
+                                                </p>
+                                                <p class="stack__result">
+                                                    Figma
+                                                </p>
+                                            </li>
+                                            <li class="stack__item">
+                                                <p class="stack-name">
+                                                    оценка своего участия в данном кейсе:
+                                                </p>
+                                                <p class="stack__result">
+                                                    5/5
+                                                </p>
+                                            </li>
+                                            <li class="stack__item">
+                                                <p class="stack-name">
+                                                    Сложности реализации:
+                                                </p>
+                                                <p class="stack__result">
+                                                    выбрать стилистику проекта
+                                                </p>
+                                            </li>
+                                        </ul>
+                                        <p class="person__description font-inter">
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut a bibendum erat. Vestibulum quis egestas erat, in rhoncus eros. Sed malesuada urna odio, ac sagittis leo elementum
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="team-item person">
+                            <div class="person-header font-inter" :data-id="index" @click="clicker">
+                                <div class="person__data">
+                                    <h3 class="person-name">
+                                        Казанцева Алина Дмитриевна
+                                    </h3>
+                                    <h4 class="person-job">
+                                        ( ux/ui дизайнер )
+                                    </h4>
+                                </div>
+                                <div class="person-galina">
+                                    <svg width="19" height="13" viewBox="0 0 19 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M17 2.5L9.5 10.5L2 2.5" stroke="#F47934" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="person__content">
+                                <div class="person__img">
+                                    <picture>
+                                        <img src="@/assets/img/banner.png" alt="logo">
+                                    </picture>
+                                </div>
+                                <div class="person__info">
+                                    <h2 class="person__title font-getvoip">
+                                        Казанцева Алина Дмитриевна
+                                    </h2>
+                                    <div class="person__body">
+                                        <p class="person__job">
+                                            ( ux/ui дизайнер )
+                                        </p>
+                                        <ul class="person__list stack font-inter">
+                                            <li class="stack__item">
+                                                <p class="stack-name">
+                                                    стек технологий:
+                                                </p>
+                                                <p class="stack__result">
+                                                    Figma
+                                                </p>
+                                            </li>
+                                            <li class="stack__item">
+                                                <p class="stack-name">
+                                                    оценка своего участия в данном кейсе:
+                                                </p>
+                                                <p class="stack__result">
+                                                    5/5
+                                                </p>
+                                            </li>
+                                            <li class="stack__item">
+                                                <p class="stack-name">
+                                                    Сложности реализации:
+                                                </p>
+                                                <p class="stack__result">
+                                                    выбрать стилистику проекта
+                                                </p>
+                                            </li>
+                                        </ul>
+                                        <p class="person__description font-inter">
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut a bibendum erat. Vestibulum quis egestas erat, in rhoncus eros. Sed malesuada urna odio, ac sagittis leo elementum
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="team-item">
+                            <button class="team-admin font-inter secondary-btn">
+                                Добавить участника
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
 </template> 
 
 <style scoped>
+    .master {
+        min-height: 100%;
+        width: 100%;
+        background: #fff;
+    }
     .banner .container {
         padding: 0;
     }

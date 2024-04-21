@@ -3,37 +3,50 @@
 </script>
 
 <template>
-    <section class="login">
-        <div class="login__cancel">
-            <nuxt-link to="/">
-                <svg width="30" height="18" viewBox="0 0 30 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M28.0479 9L2.21452 9M2.21452 9L12.5479 16.5M2.21452 9L12.5479 1.5" stroke="#F47934" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-            </nuxt-link>
-        </div>
-        <h1 class="login__title font-getvoip">
-            Вход
-        </h1>
-        <form class="login-form font-inter">
-            <input type="text" placeholder="Логин">
-            <input type="password" placeholder="Пароль">
-            <div class="login-checkbox">
-                <input type="checkbox" class="custom-checkbox" id="happy" name="happy" value="yes">
-                <label for="happy">Запомнить меня</label>
-            </div>
-            <div class="login-buttons">
-                <button class="login-btn primary-btn font-inter">
-                    Войти
-                </button>
-                <nuxt-link to="/auth/reg" class="login-redirect font-inter">
-                    Зарегистрироваться
+    <div class="master">
+        <section class="login">
+            <div class="login__cancel">
+                <nuxt-link to="/">
+                    <svg width="30" height="18" viewBox="0 0 30 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M28.0479 9L2.21452 9M2.21452 9L12.5479 16.5M2.21452 9L12.5479 1.5" stroke="#F47934" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
                 </nuxt-link>
             </div>
-        </form>
-    </section>
+            <h1 class="login__title font-getvoip">
+                Вход
+            </h1>
+            <form class="login-form font-inter">
+                <input type="text" placeholder="Логин">
+                <input type="password" placeholder="Пароль">
+                <div class="login-checkbox">
+                    <input type="checkbox" class="custom-checkbox" id="happy" name="happy" value="yes">
+                    <label for="happy">Запомнить меня</label>
+                </div>
+                <div class="login-buttons">
+                    <button class="login-btn primary-btn font-inter">
+                        Войти
+                    </button>
+                    <nuxt-link to="/auth/reg" class="login-redirect font-inter">
+                        Зарегистрироваться
+                    </nuxt-link>
+                </div>
+            </form>
+        </section>
+    </div>
 </template>
 
 <style scoped>
+.master {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100%;
+    }
     .login {
         max-width: 480px;
         width: 100%;

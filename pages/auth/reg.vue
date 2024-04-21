@@ -77,67 +77,80 @@
 </script>
 
 <template>
-    <section class="login">
-        <div class="login__cancel">
-            <nuxt-link to="/auth/login">
-                <svg width="30" height="18" viewBox="0 0 30 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M28.0479 9L2.21452 9M2.21452 9L12.5479 16.5M2.21452 9L12.5479 1.5" stroke="#F47934" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-            </nuxt-link>
-        </div>
-        <h1 class="login__title font-getvoip">
-            Регистрация
-        </h1>
-        <form class="login-form font-inter" @submit.prevent>
-            <div class="login-input">
-                <p class="login-title">Название команды <span>( * )</span></p>
-                <input type="text" maxlength="20" v-model="teamName" required>
-                <p class="login-text">
-                    *не более 20 символов
+    <div class="master">
+        <section class="login">
+            <div class="login__cancel">
+                <nuxt-link to="/auth/login">
+                    <svg width="30" height="18" viewBox="0 0 30 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M28.0479 9L2.21452 9M2.21452 9L12.5479 16.5M2.21452 9L12.5479 1.5" stroke="#F47934" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </nuxt-link>
+            </div>
+            <h1 class="login__title font-getvoip">
+                Регистрация
+            </h1>
+            <form class="login-form font-inter" @submit.prevent>
+                <div class="login-input">
+                    <p class="login-title">Название команды <span>( * )</span></p>
+                    <input type="text" maxlength="20" v-model="teamName" required>
+                    <p class="login-text">
+                        *не более 20 символов
+                    </p>
+                </div>
+                <div class="login-input">
+                    <p class="login-title">Баннер <span>( * )</span></p>
+                    <input type="file" required>
+                    <p class="login-error" v-if="viewFileError">
+                        {{ fileErrorMsg }}
+                    </p>
+                </div>
+                <div class="login-input">
+                    <p class="login-title">Почта <span>( * )</span></p>
+                    <input type="email" v-model="email" required>
+                </div>
+                <div class="login-input">
+                    <p class="login-title">Логин <span>( * )</span></p>
+                    <input type="text" v-model="login" required>
+                </div>
+                <div class="login-input">
+                    <p class="login-title">Пароль <span>( * )</span></p>
+                    <input type="password" v-model="password" required>
+                    <p class="login-error" v-if="viewPassError">
+                        {{ passErrorMsg }}
+                    </p>
+                    <p class="login-text">
+                        *минимальное количество символов 8, в них должны присутствовать: заглавная буква, строчная буква, цифра, символ
+                    </p>
+                </div>
+                <p class="login-description font-inter">
+                    <span>( * )</span>
+                    обязательное поле
                 </p>
-            </div>
-            <div class="login-input">
-                <p class="login-title">Баннер <span>( * )</span></p>
-                <input type="file" required>
-                <p class="login-error" v-if="viewFileError">
-                    {{ fileErrorMsg }}
+                <p class="login-error" v-if="formErrorTextView">
+                    {{ formErrorText }}
                 </p>
-            </div>
-            <div class="login-input">
-                <p class="login-title">Почта <span>( * )</span></p>
-                <input type="email" v-model="email" required>
-            </div>
-            <div class="login-input">
-                <p class="login-title">Логин <span>( * )</span></p>
-                <input type="text" v-model="login" required>
-            </div>
-            <div class="login-input">
-                <p class="login-title">Пароль <span>( * )</span></p>
-                <input type="password" v-model="password" required>
-                <p class="login-error" v-if="viewPassError">
-                    {{ passErrorMsg }}
-                </p>
-                <p class="login-text">
-                    *минимальное количество символов 8, в них должны присутствовать: заглавная буква, строчная буква, цифра, символ
-                </p>
-            </div>
-            <p class="login-description font-inter">
-                <span>( * )</span>
-                обязательное поле
-            </p>
-            <p class="login-error" v-if="formErrorTextView">
-                {{ formErrorText }}
-            </p>
-            <div class="login-buttons">
-                <button class="login-btn primary-btn font-inter" @click="submitter">
-                    Зарегистрироваться
-                </button>
-            </div>
-        </form>
-    </section>
+                <div class="login-buttons">
+                    <button class="login-btn primary-btn font-inter" @click="submitter">
+                        Зарегистрироваться
+                    </button>
+                </div>
+            </form>
+        </section>
+    </div>
 </template>
 
 <style scoped>
+    .master {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        min-height: 100%;
+        background: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
     .login {
         padding: 40px 16px;
         max-width: 480px;
