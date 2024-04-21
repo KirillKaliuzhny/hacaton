@@ -10,8 +10,10 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@vueform/slider": "^2.1.10",
     "nuxt": "^3.11.2",
     "nuxt-swiper": "^1.2.2",
+    "swiper": "^11.1.1",
     "vue": "^3.4.21",
     "vue-router": "^4.3.0"
   }
