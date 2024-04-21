@@ -6,12 +6,29 @@
     const login = ref('');
     const password = ref('');
 
-    const passErrorMsg = 'Некорректно ввден пароль';
-    const viewError = ref(false);
+    const passErrorMsg = 'Некорректно введен пароль';
+    const fileErrorMsg = 'Введен не тот тип файла';
+    const viewFileError = ref(false)
+    const viewPassError = ref(false);
 
     const submitter = async (e) => {
         const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-
+        if (!regex.test(password.value)) {
+            viewPassError.value = true;
+            return;
+        }
+        else {
+            viewPassError.value = false;
+        }
+        const file = document.querySelector('input[type=file]').files[0];
+        if (file.type.includes('image')) {
+            viewFileError.value = false;
+        }
+        else {
+            viewFileError.value = true;
+            return;
+        }
+        console.log(file);
     }
 
 </script>
@@ -28,30 +45,33 @@
         <h1 class="login__title font-getvoip">
             Регистрация
         </h1>
-        <form class="login-form font-inter" @submit.prevent="submitter">
+        <form class="login-form font-inter" @submit.prevent>
             <div class="login-input">
                 <p class="login-title">Название команды <span>( * )</span></p>
-                <input type="text" maxlength="20" v-model="teamName">
+                <input type="text" maxlength="20" v-model="teamName" required>
                 <p class="login-text">
                     *не более 20 символов
                 </p>
             </div>
             <div class="login-input">
                 <p class="login-title">Баннер <span>( * )</span></p>
-                <input type="file">
+                <input type="file" required>
+                <p class="login-error" v-if="viewFileError">
+                    {{ fileErrorMsg }}
+                </p>
             </div>
             <div class="login-input">
                 <p class="login-title">Почта <span>( * )</span></p>
-                <input type="text" v-model="email">
+                <input type="email" v-model="email" required>
             </div>
             <div class="login-input">
                 <p class="login-title">Логин <span>( * )</span></p>
-                <input type="text" v-model="login">
+                <input type="text" v-model="login" required>
             </div>
             <div class="login-input">
                 <p class="login-title">Пароль <span>( * )</span></p>
-                <input type="password" v-model="password">
-                <p class="login-error">
+                <input type="password" v-model="password" required>
+                <p class="login-error" v-if="viewPassError">
                     {{ passErrorMsg }}
                 </p>
                 <p class="login-text">
@@ -63,7 +83,7 @@
                 обязательное поле
             </p>
             <div class="login-buttons">
-                <button class="login-btn primary-btn font-inter">
+                <button class="login-btn primary-btn font-inter" @click="submitter">
                     Зарегистрироваться
                 </button>
             </div>
@@ -147,9 +167,5 @@
     .login-error {
         font-family: 'Super-Inter';
         color: red;
-        display: none;
-    }
-    .login-error.active {
-        display: block;
     }
 </style>
